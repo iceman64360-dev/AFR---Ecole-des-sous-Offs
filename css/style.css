@@ -1,0 +1,112 @@
+/* 🌍 Global */
+:root {
+    --primary-color: #1a1a1a; /* Fond sombre */
+    --secondary-color: #c39d63; /* Or West Point */
+    --light-color: #f8f9fa; /* Fond clair */
+    --dark-gray: #2c2c2c;
+    --text-color: #ffffff;
+    --text-dark: #333;
+}
+
+/* 🎯 Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+/* 🛡️ En-tête (Header) */
+header {
+    background: var(--dark-gray);
+    padding: 20px 0;
+    text-align: center;
+    position: relative;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo img {
+    width: 150px; /* Ajuste selon ton logo */
+    height: auto;
+}
+
+/* 🏛️ Navigation */
+nav {
+    background: var(--primary-color);
+    padding: 15px 0;
+    text-align: center;
+}
+
+nav ul {
+    list-style: none;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 20px;
+}
+
+nav ul li a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 18px;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+nav ul li a:hover {
+    color: var(--secondary-color);
+}
+
+/* 🎖️ Section principale (Hero) */
+.hero {
+    background: url("../assets/hero-bg.jpg") center/cover no-repeat;
+    color: var(--text-color);
+    text-align: center;
+    padding: 100px 20px;
+    position: relative;
+}
+
+.hero-text {
+    background: rgba(0, 0, 0, 0.6);
+    display: inline-block;
+    padding: 20px 40px;
+    border-radius: 10px;
+}
+
+/* 📌 Contenu en colonnes */
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 40px 20px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.card {
+    background: var(--light-color);
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.card h2 {
+    color: var(--dark-gray);
+    margin-bottom: 10px;
+}
+
+/* 🔻 Pied de page */
+footer {
+    background: var(--dark-gray);
+    color: var(--text-color);
+    text-align: center;
+    padding: 20px;
+    margin-top: 20px;
+}

@@ -3,241 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AFR - Ecoles des Sous-Officiers</title>
-    <link rel="stylesheet" href="./css/styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="icon" type="image/png" href="./assets/favicon.png">
+    <title>AFR - École des Sous-Officiers</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/script.js" defer></script>
 </head>
 <body>
-    <div class="wrapper">
-        <!-- Sidebar -->
-        <nav id="sidebar">
-            <div class="sidebar-header">
-                <div class="logo-container">
-                    <img src="./assets/logo.png" alt="AFR Logo" class="logo">
-                </div>
-                <h3>AFR - Ecoles des Sous-Officiers</h3>
-                <button type="button" id="sidebarCollapse" class="sidebar-toggle">
-                    <i class="fas fa-bars"></i>
-                </button>
-            </div>
 
-            <div class="sidebar-search">
-                <input type="text" id="searchInput" placeholder="Rechercher...">
-                <i class="fas fa-search search-icon"></i>
-            </div>
-
-            <ul class="sidebar-menu">
-                <li class="active">
-                    <a href="index.html">
-                        <i class="fas fa-home"></i>
-                        <span>Accueil</span>
-                    </a>
-                </li>
-                <li class="has-submenu">
-                    <a href="#" class="submenu-toggle">
-                        <i class="fas fa-book"></i>
-                        <span>Guides</span>
-                        <i class="fas fa-chevron-down dropdown-icon"></i>
-                    </a>
-                    <ul class="submenu">
-                        <li>
-                            <a href="./guides/communication.html">
-                                <span>Communication Radio</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="./guides/team-leader.html">
-                                <span>Formation Team Leader</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="./guides/mett-t.html">
-                                <span>METT-T</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="has-submenu">
-                    <a href="#" class="submenu-toggle">
-                        <i class="fas fa-chess"></i>
-                        <span>Tactiques</span>
-                        <i class="fas fa-chevron-down dropdown-icon"></i>
-                    </a>
-                    <ul class="submenu">
-                        <li>
-                            <a href="./tactiques/formations.html">
-                                <span>Formations</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="./tactiques/combat-urbain.html">
-                                <span>Combat urbain</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="./tactiques/embuscades.html">
-                                <span>Embuscades</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="has-submenu">
-                    <a href="#" class="submenu-toggle">
-                        <i class="fas fa-graduation-cap"></i>
-                        <span>Formations</span>
-                        <i class="fas fa-chevron-down dropdown-icon"></i>
-                    </a>
-                    <ul class="submenu">
-                        <li>
-                            <a href="./formations/basique.html">
-                                <span>Formation Basique</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="./formations/specialistes.html">
-                                <span>Spécialistes</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="./formations/leadership.html">
-                                <span>Leadership</span>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a href="./outils.html">
-                        <i class="fas fa-tools"></i>
-                        <span>Outils</span>
-                    </a>
-                </li>
-                <li>
-                    <a href="./contact.html">
-                        <i class="fas fa-envelope"></i>
-                        <span>Contact</span>
-                    </a>
-                </li>
-            </ul>
-
-            <div class="sidebar-footer">
-                <p>© Alliance des Forces Rivales</p>
-                <div class="social-icons">
-                    <a href="#" target="_blank"><i class="fab fa-discord"></i></a>
-                    <a href="#" target="_blank"><i class="fab fa-steam"></i></a>
-                    <a href="#" target="_blank"><i class="fab fa-youtube"></i></a>
-                </div>
-            </div>
-        </nav>
-
-        <!-- Page Content -->
-        <div id="content">
-            <div class="content-welcome">
-                <h1>AFR - Ecoles des Sous-Officiers</h1>
-                <p>Ce site regroupe l'ensemble des guides, tactiques et formations de l'Alliance Francophone Reforger. Il est conçu pour aider les membres à améliorer leurs compétences et à comprendre les procédures opérationnelles standards utilisées au sein de notre communauté.</p>
-            </div>
-
-            <!-- Guides Populaires -->
-            <div class="content-section">
-                <h2 class="section-title">Guides Populaires</h2>
-                
-                <div class="cards-grid">
-                    <div class="card">
-                        <div class="card-icon">
-                            <i class="fas fa-satellite-dish"></i>
-                        </div>
-                        <div class="card-content">
-                            <h3>Guide de Communication</h3>
-                            <p>Maîtrisez les procédures radio et améliorez la coordination en mission.</p>
-                            <a href="./guides/communication.html" class="card-link">
-                                <span>Consulter</span>
-                                <i class="fas fa-arrow-right"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <div class="card-icon">
-                            <i class="fas fa-user-tie"></i>
-                        </div>
-                        <div class="card-content">
-                            <h3>Formation Team Leader</h3>
-                            <p>Apprenez à diriger une équipe efficacement sur le terrain et en dehors.</p>
-                            <a href="./guides/team-leader.html" class="card-link">
-                                <span>Consulter</span>
-                                <i class="fas fa-arrow-right"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <div class="card-icon">
-                            <i class="fas fa-clipboard-list"></i>
-                        </div>
-                        <div class="card-content">
-                            <h3>METT-T</h3>
-                            <p>Analyse et préparation des missions avec la méthode METT-T.</p>
-                            <a href="./guides/mett-t.html" class="card-link">
-                                <span>Consulter</span>
-                                <i class="fas fa-arrow-right"></i>
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="card">
-                        <div class="card-icon">
-                            <i class="fas fa-users"></i>
-                        </div>
-                        <div class="card-content">
-                            <h3>Formations Tactiques</h3>
-                            <p>Différentes formations pour se déplacer efficacement en équipe.</p>
-                            <a href="./tactiques/formations.html" class="card-link">
-                                <span>Consulter</span>
-                                <i class="fas fa-arrow-right"></i>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Dernières mises à jour -->
-            <div class="content-section">
-                <h2 class="section-title">Dernières mises à jour</h2>
-                
-                <div class="updates-list">
-                    <div class="update-item">
-                        <div class="update-date">28 Fév 2025</div>
-                        <div class="update-content">
-                            <h3>Nouveau guide de communication radio</h3>
-                            <p>Ajout d'un guide complet sur les procédures de communication radio en mission.</p>
-                        </div>
-                    </div>
-
-                    <div class="update-item">
-                        <div class="update-date">25 Fév 2025</div>
-                        <div class="update-content">
-                            <h3>Formation Team Leader mise à jour</h3>
-                            <p>Révision complète de la formation TL avec ajout de nouveaux exercices pratiques.</p>
-                        </div>
-                    </div>
-
-                    <div class="update-item">
-                        <div class="update-date">20 Fév 2025</div>
-                        <div class="update-content">
-                            <h3>Nouvel outil METT-T interactif</h3>
-                            <p>Mise en ligne d'un formulaire interactif pour l'analyse de mission avec la méthode METT-T.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <footer>
-                <p>© 2025 Alliance des Forces Rivales - Tous droits réservés</p>
-            </footer>
+    <header>
+        <div class="logo">
+            <img src="assets/logo.png" alt="Logo AFR">
         </div>
-    </div>
+    </header>
+    
+    <nav>
+        <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="formations/team-leader.html">Formation TL</a></li>
+            <li><a href="guides/briefing.html">Briefing</a></li>
+            <li><a href="tactiques/deplacements.html">Tactiques</a></li>
+            <li><a href="outils.html">Outils</a></li>
+        </ul>
+    </nav>
+    
+    <section class="hero">
+        <div class="hero-text">
+            <h1>Bienvenue à l'AFR - École des Sous-Officiers</h1>
+            <p>Excellence, discipline et leadership au service du combat.</p>
+        </div>
+    </section>
+    
+    <section class="container">
+        <div class="card">
+            <h2>Leadership</h2>
+            <p>Développez vos compétences en commandement et gestion d’équipe.</p>
+        </div>
+        <div class="card">
+            <h2>Tactiques</h2>
+            <p>Apprenez les formations, déplacements et stratégies militaires.</p>
+        </div>
+        <div class="card">
+            <h2>Communication</h2>
+            <p>Maîtrisez les protocoles radio et la transmission des ordres.</p>
+        </div>
+    </section>
+    
+    <footer>
+        <p>&copy; 2024 AFR - Tous droits réservés</p>
+    </footer>
+    
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="./js/script.js"></script>
 </body>
 </html>
