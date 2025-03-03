@@ -3,54 +3,330 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AFR - École des Sous-Officiers</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>École des Sous-Officiers - Formation</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;600;700&display=swap" rel="stylesheet">
     <script src="js/script.js" defer></script>
 </head>
 <body>
-
-    <header>
-        <div class="logo">
-            <img src="assets/logo.png" alt="Logo AFR">
+    <!-- En-tête fixe avec logo et navigation -->
+    <header id="site-header">
+        <div class="logo-container">
+            <img src="assets/logo.png" alt="Logo de l'École des Sous-Officiers">
+            <h1>École des Sous-Officiers - Documentation Formateurs</h1>
         </div>
+        <nav>
+            <ul>
+                <li><a href="index.html" class="active"><i class="fas fa-home"></i> ACCUEIL</a></li>
+                <li><a href="#formation"><i class="fas fa-graduation-cap"></i> PLANS DE FORMATION</a></li>
+                <li><a href="#docs"><i class="fas fa-book"></i> DOCUMENTATION</a></li>
+                <li><a href="#recherche"><i class="fas fa-search"></i> RECHERCHE</a></li>
+            </ul>
+        </nav>
     </header>
-    
-    <nav>
-        <ul>
-            <li><a href="index.html">Accueil</a></li>
-            <li><a href="formations/team-leader.html">Formation TL</a></li>
-            <li><a href="guides/briefing.html">Briefing</a></li>
-            <li><a href="tactiques/deplacements.html">Tactiques</a></li>
-            <li><a href="outils.html">Outils</a></li>
-        </ul>
-    </nav>
-    
-    <section class="hero">
-        <div class="hero-text">
-            <h1>Bienvenue à l'AFR - École des Sous-Officiers</h1>
-            <p>Excellence, discipline et leadership au service du combat.</p>
-        </div>
-    </section>
-    
-    <section class="container">
-        <div class="card">
-            <h2>Leadership</h2>
-            <p>Développez vos compétences en commandement et gestion d’équipe.</p>
-        </div>
-        <div class="card">
-            <h2>Tactiques</h2>
-            <p>Apprenez les formations, déplacements et stratégies militaires.</p>
-        </div>
-        <div class="card">
-            <h2>Communication</h2>
-            <p>Maîtrisez les protocoles radio et la transmission des ordres.</p>
-        </div>
-    </section>
-    
-    <footer>
-        <p>&copy; 2024 AFR - Tous droits réservés</p>
-    </footer>
-    
 
+    <div class="main-container">
+        <!-- Fil d'Ariane pour faciliter la navigation -->
+        <div class="breadcrumb">
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li>Documentation Formateurs</li>
+            </ul>
+        </div>
+
+        <!-- Accès rapide -->
+        <section id="apercu">
+            <h2><i class="fas fa-bolt"></i> ACCÈS RAPIDE</h2>
+            <div class="military-tiles">
+                <a href="docs/caporal.html" class="military-tile">
+                    <i class="fas fa-user-graduate"></i>
+                    <span class="title">Formation Caporal</span>
+                </a>
+                <a href="docs/tactique.html" class="military-tile">
+                    <i class="fas fa-chess"></i>
+                    <span class="title">Tactique</span>
+                </a>
+                <a href="docs/leadership.html" class="military-tile">
+                    <i class="fas fa-users"></i>
+                    <span class="title">Leadership</span>
+                </a>
+                <a href="docs/game-master.html" class="military-tile">
+                    <i class="fas fa-gamepad"></i>
+                    <span class="title">Game Master</span>
+                    <span class="military-badge">Nouveau</span>
+                </a>
+            </div>
+        </section>
+
+        <!-- Grille principale contenant les formations et la documentation -->
+        <div class="grid-container">
+            <!-- Plans de formation -->
+            <section id="formation">
+                <h2><i class="fas fa-graduation-cap"></i> PLANS DE FORMATION</h2>
+                
+                <div class="military-card">
+                    <div class="military-card-header">
+                        <i class="fas fa-user-graduate"></i> Sous-Officiers subalternes
+                    </div>
+                    <div class="military-card-body">
+                        <p>Formations pour les grades de Caporal à Sergent-chef</p>
+                    </div>
+                    <div class="military-card-footer">
+                        <button type="button" class="military-btn toggle-content" data-target="content-so-subalternes">
+                            VOIR <i class="fas fa-chevron-down"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Contenu à afficher/masquer -->
+                <div id="content-so-subalternes" class="content-section" style="display: none;">
+                    <ul class="military-list">
+                        <li><a href="docs/caporal.html"><i class="fas fa-user-graduate"></i> Formation Caporal</a></li>
+                        <li><a href="docs/sergent.html"><i class="fas fa-user-graduate"></i> Formation Sergent</a></li>
+                    </ul>
+                </div>
+                
+                <div class="military-card">
+                    <div class="military-card-header">
+                        <i class="fas fa-user-graduate"></i> Sous-Officiers supérieurs
+                    </div>
+                    <div class="military-card-body">
+                        <p>Formations pour les grades d'Adjudant à Major</p>
+                    </div>
+                    <div class="military-card-footer">
+                        <button type="button" class="military-btn toggle-content" data-target="content-so-superieurs">
+                            VOIR <i class="fas fa-chevron-down"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Contenu à afficher/masquer -->
+                <div id="content-so-superieurs" class="content-section" style="display: none;">
+                    <ul class="military-list">
+                        <li><a href="docs/adjudant.html"><i class="fas fa-user-graduate"></i> Formation Adjudant</a></li>
+                        <li><a href="docs/adjudant-chef.html"><i class="fas fa-user-graduate"></i> Formation Adjudant-Chef</a></li>
+                        <li><a href="docs/major.html"><i class="fas fa-user-graduate"></i> Formation Major</a></li>
+                    </ul>
+                </div>
+                
+                <div class="military-card">
+                    <div class="military-card-header">
+                        <i class="fas fa-user-tie"></i> Officiers
+                    </div>
+                    <div class="military-card-body">
+                        <p>Formations pour les grades d'Aspirant à Colonel</p>
+                    </div>
+                    <div class="military-card-footer">
+                        <button type="button" class="military-btn toggle-content" data-target="content-officiers">
+                            VOIR <i class="fas fa-chevron-down"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Contenu à afficher/masquer -->
+                <div id="content-officiers" class="content-section" style="display: none;">
+                    <ul class="military-list">
+                        <li><a href="docs/aspirant.html"><i class="fas fa-user-graduate"></i> Formation Aspirant</a></li>
+                        <li><a href="docs/lieutenant.html"><i class="fas fa-user-graduate"></i> Formation Lieutenant</a></li>
+                        <li><a href="docs/capitaine.html"><i class="fas fa-user-graduate"></i> Formation Capitaine</a></li>
+                        <li><a href="docs/commandant.html"><i class="fas fa-user-graduate"></i> Formation Commandant</a></li>
+                        <li><a href="docs/lieutenant-colonel.html"><i class="fas fa-user-graduate"></i> Formation Lieutenant-Colonel</a></li>
+                        <li><a href="docs/colonel.html"><i class="fas fa-user-graduate"></i> Formation Colonel</a></li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Documentation -->
+            <section id="docs">
+                <h2><i class="fas fa-book"></i> DOCUMENTATION</h2>
+                
+                <div class="military-card">
+                    <div class="military-card-header">
+                        <i class="fas fa-chess"></i> Tactiques & Manœuvres
+                    </div>
+                    <div class="military-card-body">
+                        <p>Documentation sur les stratégies et mouvements</p>
+                    </div>
+                    <div class="military-card-footer">
+                        <button type="button" class="military-btn toggle-content" data-target="content-tactiques">
+                            VOIR <i class="fas fa-chevron-down"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Contenu à afficher/masquer -->
+                <div id="content-tactiques" class="content-section" style="display: none;">
+                    <ul class="military-list">
+                        <li><a href="docs/tactique.html"><i class="fas fa-chess"></i> Tactique</a></li>
+                        <li><a href="docs/mouvements.html"><i class="fas fa-running"></i> Mouvements en formation</a></li>
+                        <li><a href="docs/combat.html"><i class="fas fa-flag"></i> Prise et défense d'objectifs</a></li>
+                        <li><a href="docs/couverts.html"><i class="fas fa-mountain"></i> Utilisation des couverts et de la topographie</a></li>
+                        <li><a href="docs/suppression.html"><i class="fas fa-crosshairs"></i> Tir de suppression et manœuvres</a></li>
+                        <li><a href="docs/embuscade.html"><i class="fas fa-user-ninja"></i> Tactiques d'embuscade</a></li>
+                    </ul>
+                </div>
+                
+                <div class="military-card">
+                    <div class="military-card-header">
+                        <i class="fas fa-comments"></i> Communication & Leadership
+                    </div>
+                    <div class="military-card-body">
+                        <p>Gestion d'équipe et communications</p>
+                    </div>
+                    <div class="military-card-footer">
+                        <button type="button" class="military-btn toggle-content" data-target="content-communication">
+                            VOIR <i class="fas fa-chevron-down"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Contenu à afficher/masquer -->
+                <div id="content-communication" class="content-section" style="display: none;">
+                    <ul class="military-list">
+                        <li><a href="docs/communication.html"><i class="fas fa-comments"></i> Communication</a></li>
+                        <li><a href="docs/leadership.html"><i class="fas fa-users"></i> Leadership</a></li>
+                        <li><a href="docs/radio.html"><i class="fas fa-broadcast-tower"></i> Utilisation des radios</a></li>
+                        <li><a href="docs/commandement.html"><i class="fas fa-crown"></i> Gestion des unités et leadership</a></li>
+                    </ul>
+                </div>
+                
+                <div class="military-card">
+                    <div class="military-card-header">
+                        <i class="fas fa-tools"></i> Matériel & Outils
+                    </div>
+                    <div class="military-card-body">
+                        <p>Utilisation du matériel et Game Master</p>
+                    </div>
+                    <div class="military-card-footer">
+                        <button type="button" class="military-btn toggle-content" data-target="content-materiel">
+                            VOIR <i class="fas fa-chevron-down"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Contenu à afficher/masquer -->
+                <div id="content-materiel" class="content-section" style="display: none;">
+                    <ul class="military-list">
+                        <li><a href="docs/materiel.html"><i class="fas fa-toolbox"></i> Utilisation du matériel</a></li>
+                        <li><a href="docs/game-master.html"><i class="fas fa-gamepad"></i> Utilisation de Game Master <span class="notification-badge">Nouveau</span></a></li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Recherche -->
+            <section id="recherche">
+                <h2><i class="fas fa-search"></i> RECHERCHE</h2>
+                
+                <div class="search-container">
+                    <input type="text" class="military-search" id="search" placeholder="Rechercher dans la documentation..." aria-label="Rechercher">
+                    <button type="button" class="search-button" aria-label="Lancer la recherche">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+                
+                <div id="search-results" aria-live="polite"></div>
+                
+                <div class="search-suggestions">
+                    <h3><i class="fas fa-tags"></i> Recherches populaires</h3>
+                    <div class="military-tags">
+                        <a href="#" class="military-tag" data-search="tactique">Tactique</a>
+                        <a href="#" class="military-tag" data-search="formation">Formation</a>
+                        <a href="#" class="military-tag" data-search="leadership">Leadership</a>
+                        <a href="#" class="military-tag" data-search="radio">Radio</a>
+                        <a href="#" class="military-tag" data-search="embuscade">Embuscade</a>
+                    </div>
+                </div>
+                
+                <div class="recent-searches">
+                    <h3><i class="fas fa-history"></i> Recherches récentes</h3>
+                    <ul id="recent-searches-list" class="military-list">
+                        <!-- Rempli dynamiquement par JavaScript -->
+                    </ul>
+                </div>
+            </section>
+        </div>
+
+        <!-- Tableau des formations récentes -->
+        <section id="formations-recentes">
+            <h2><i class="fas fa-calendar-alt"></i> FORMATIONS RÉCENTES</h2>
+            
+            <table class="military-table">
+                <thead>
+                    <tr>
+                        <th>Formation</th>
+                        <th>Date</th>
+                        <th>Durée</th>
+                        <th>Statut</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Formation Caporal</td>
+                        <td>15/03/2025</td>
+                        <td>2 semaines</td>
+                        <td>En cours</td>
+                        <td><a href="formations/caporal-03-2025.html" class="military-btn">Détails</a></td>
+                    </tr>
+                    <tr>
+                        <td>Tactiques d'embuscade</td>
+                        <td>01/03/2025</td>
+                        <td>3 jours</td>
+                        <td>Terminée</td>
+                        <td><a href="formations/embuscade-03-2025.html" class="military-btn">Détails</a></td>
+                    </tr>
+                    <tr>
+                        <td>Leadership et commandement</td>
+                        <td>20/02/2025</td>
+                        <td>1 semaine</td>
+                        <td>Terminée</td>
+                        <td><a href="formations/leadership-02-2025.html" class="military-btn">Détails</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </div>
+
+    <!-- Bouton retour en haut de page -->
+    <div class="back-to-top" id="back-to-top" title="Retour en haut">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <!-- Pied de page avec liens utiles -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Navigation</h3>
+                <ul>
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="#formation">Plans de Formation</a></li>
+                    <li><a href="#docs">Documentation</a></li>
+                    <li><a href="#recherche">Recherche</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Ressources</h3>
+                <ul>
+                    <li><a href="resources/calendrier.html">Calendrier des formations</a></li>
+                    <li><a href="resources/faq.html">FAQ</a></li>
+                    <li><a href="resources/telechargements.html">Téléchargements</a></li>
+                    <li><a href="resources/contacts.html">Annuaire des formateurs</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>Informations</h3>
+                <ul>
+                    <li><a href="info/contact.html">Nous contacter</a></li>
+                    <li><a href="info/mentions-legales.html">Mentions légales</a></li>
+                    <li><a href="info/plan-du-site.html">Plan du site</a></li>
+                    <li><a href="info/aide.html">Aide</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 École des Sous-Officiers - Tous droits réservés. Version 2.5.3</p>
+        </div>
+    </footer>
 </body>
 </html>

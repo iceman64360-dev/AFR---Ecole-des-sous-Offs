@@ -1,0 +1,674 @@
+/* Variables pour faciliter la cohérence et les modifications */
+:root {
+    --primary-color: #1a5276; /* Bleu militaire */
+    --secondary-color: #117a65; /* Vert militaire */
+    --accent-color: #b7950b; /* Or militaire */
+    --dark-bg: #1c2833; /* Fond sombre */
+    --medium-bg: #273746; /* Fond médium */
+    --light-bg: #34495e; /* Fond clair */
+    --text-color: #ecf0f1;
+    --border-color: #5d6d7e;
+    --success-color: #27ae60;
+    --warning-color: #f39c12;
+    --box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    --transition: all 0.2s ease;
+    --border-radius: 2px;
+    --header-height: 100px;
+}
+
+/* Reset et styles de base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto Condensed', 'Arial Narrow', Arial, sans-serif;
+    background-color: var(--dark-bg);
+    color: var(--text-color);
+    line-height: 1.6;
+    padding-top: var(--header-height);
+    background-image: url('assets/subtle-pattern.png');
+    background-repeat: repeat;
+}
+
+/* Améliorations de l'en-tête - style militaire avec bordure inférieure */
+header {
+    background-color: var(--dark-bg);
+    border-bottom: 3px solid var(--accent-color);
+    padding: 10px 20px;
+    box-shadow: var(--box-shadow);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: var(--header-height);
+}
+
+.logo-container {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.logo-container img {
+    width: 50px;
+    height: auto;
+    margin-right: 15px;
+}
+
+h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-color);
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* Navigation style militaire */
+nav {
+    width: 100%;
+    background-color: var(--medium-bg);
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0;
+}
+
+nav ul li {
+    flex: 1;
+    text-align: center;
+    position: relative;
+    border-right: 1px solid var(--border-color);
+}
+
+nav ul li:last-child {
+    border-right: none;
+}
+
+nav ul li a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: 600;
+    padding: 10px 15px;
+    transition: var(--transition);
+    display: block;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+}
+
+nav ul li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 3px;
+    bottom: 0;
+    left: 50%;
+    background-color: var(--accent-color);
+    transition: all 0.3s ease;
+}
+
+nav ul li a:hover::after, 
+nav ul li a.active::after {
+    width: 100%;
+    left: 0;
+}
+
+nav ul li a:hover, 
+nav ul li a.active {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Conteneur principal responsif */
+.main-container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+
+/* Breadcrumb militaire */
+.breadcrumb {
+    background-color: var(--medium-bg);
+    padding: 8px 15px;
+    border-radius: var(--border-radius);
+    margin-bottom: 20px;
+    border-left: 4px solid var(--accent-color);
+    font-size: 0.85rem;
+}
+
+.breadcrumb ul {
+    display: flex;
+    list-style: none;
+    flex-wrap: wrap;
+}
+
+.breadcrumb li {
+    display: flex;
+    align-items: center;
+    margin-right: 5px;
+}
+
+.breadcrumb li:not(:last-child)::after {
+    content: '›';
+    margin-left: 5px;
+    color: var(--border-color);
+}
+
+.breadcrumb a {
+    color: var(--accent-color);
+    text-decoration: none;
+}
+
+.breadcrumb a:hover {
+    text-decoration: underline;
+}
+
+/* Grille pour les sections principales */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+/* Style militaire pour les sections */
+section {
+    background-color: var(--medium-bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 20px;
+    box-shadow: var(--box-shadow);
+    position: relative;
+}
+
+section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background-color: var(--primary-color);
+}
+
+/* Titre des sections style militaire */
+h2 {
+    color: var(--text-color);
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+    padding-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border-bottom: 2px solid var(--primary-color);
+    display: flex;
+    align-items: center;
+}
+
+h2 i {
+    margin-right: 10px;
+    color: var(--accent-color);
+}
+
+/* Tuiles militaires pour l'accès rapide */
+.military-tiles {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 15px;
+}
+
+.military-tile {
+    background-color: var(--light-bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    padding: 15px 10px;
+    text-align: center;
+    transition: var(--transition);
+    text-decoration: none;
+    color: var(--text-color);
+    position: relative;
+    overflow: hidden;
+}
+
+.military-tile:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--box-shadow);
+    border-color: var(--accent-color);
+}
+
+.military-tile i {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: var(--primary-color);
+    display: block;
+}
+
+.military-tile .title {
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.military-badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: var(--accent-color);
+    color: var(--dark-bg);
+    font-size: 0.7rem;
+    padding: 2px 6px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+/* Cartes style militaire */
+.military-card {
+    background-color: var(--light-bg);
+    border: 1px solid var(--border-color);
+    border-radius: var(--border-radius);
+    margin-bottom: 15px;
+    overflow: hidden;
+}
+
+.military-card-header {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    padding: 10px 15px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: 1rem;
+    border-bottom: 2px solid var(--accent-color);
+}
+
+.military-card-body {
+    padding: 15px;
+}
+
+.military-card-footer {
+    background-color: rgba(0, 0, 0, 0.1);
+    padding: 10px 15px;
+    text-align: right;
+    border-top: 1px solid var(--border-color);
+}
+
+/* Listes style militaire */
+.military-list {
+    list-style: none;
+    width: 100%;
+}
+
+.military-list li {
+    margin-bottom: 8px;
+}
+
+.military-list li a {
+    display: flex;
+    align-items: center;
+    padding: 8px 12px;
+    background-color: var(--dark-bg);
+    color: var(--text-color);
+    text-decoration: none;
+    transition: var(--transition);
+    border-left: 3px solid var(--primary-color);
+}
+
+.military-list li a:hover {
+    background-color: var(--medium-bg);
+    border-left-color: var(--accent-color);
+}
+
+.military-list li a i {
+    margin-right: 8px;
+    color: var(--accent-color);
+    width: 20px;
+    text-align: center;
+}
+
+/* Bouton style militaire */
+.military-btn {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    border: none;
+    padding: 8px 15px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: var(--transition);
+    text-decoration: none;
+    display: inline-block;
+    border-radius: var(--border-radius);
+}
+
+.military-btn:hover {
+    background-color: var(--secondary-color);
+}
+
+/* Recherche style militaire */
+.search-container {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.military-search {
+    width: 100%;
+    padding: 10px 40px 10px 15px;
+    background-color: var(--dark-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    border-radius: var(--border-radius);
+    font-size: 0.9rem;
+}
+
+.military-search:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(26, 82, 118, 0.3);
+}
+
+.search-button {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    width: 40px;
+    background-color: transparent;
+    border: none;
+    color: var(--accent-color);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Tags de recherche style militaire */
+.military-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 15px;
+}
+
+.military-tag {
+    background-color: var(--dark-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    padding: 5px 10px;
+    font-size: 0.8rem;
+    border-radius: var(--border-radius);
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.military-tag:hover {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+/* Pied de page style militaire */
+footer {
+    background-color: var(--dark-bg);
+    border-top: 3px solid var(--accent-color);
+    padding: 30px 0 15px;
+    margin-top: 40px;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+    padding: 0 20px;
+}
+
+.footer-section h3 {
+    color: var(--accent-color);
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    position: relative;
+    padding-bottom: 8px;
+}
+
+.footer-section h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 2px;
+    background-color: var(--accent-color);
+}
+
+.footer-section ul {
+    list-style: none;
+}
+
+.footer-section ul li {
+    margin-bottom: 8px;
+}
+
+.footer-section ul li a {
+    color: var(--text-color);
+    text-decoration: none;
+    transition: var(--transition);
+    font-size: 0.9rem;
+    display: block;
+}
+
+.footer-section ul li a:hover {
+    color: var(--accent-color);
+    padding-left: 5px;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    margin-top: 20px;
+    border-top: 1px solid var(--border-color);
+    font-size: 0.85rem;
+    color: var(--border-color);
+}
+
+/* Bouton retour en haut style militaire */
+.back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    border-radius: var(--border-radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--transition);
+    z-index: 90;
+    border: 1px solid var(--border-color);
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.back-to-top:hover {
+    background-color: var(--secondary-color);
+}
+
+/* Adaptation pour mobile */
+@media (max-width: 768px) {
+    header {
+        height: auto;
+        padding-bottom: 0;
+    }
+    
+    .logo-container {
+        margin-bottom: 5px;
+    }
+    
+    h1 {
+        font-size: 1.2rem;
+    }
+    
+    nav ul {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        padding-bottom: 5px;
+    }
+    
+    nav ul li {
+        flex: 0 0 auto;
+    }
+    
+    nav ul li a {
+        padding: 8px 12px;
+        font-size: 0.8rem;
+    }
+    
+    body {
+        padding-top: 120px;
+    }
+    
+    .grid-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .military-tiles {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    }
+}
+
+/* Message d'accueil style militaire */
+.welcome-message {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.welcome-message.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.welcome-content {
+    background-color: var(--medium-bg);
+    border: 2px solid var(--accent-color);
+    border-radius: var(--border-radius);
+    width: 90%;
+    max-width: 500px;
+    overflow: hidden;
+}
+
+.welcome-header {
+    background-color: var(--primary-color);
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid var(--accent-color);
+}
+
+.welcome-header h3 {
+    margin: 0;
+    color: var(--text-color);
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+#welcome-close {
+    background: none;
+    border: none;
+    color: var(--text-color);
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+}
+
+.welcome-body {
+    padding: 20px;
+}
+
+.welcome-footer {
+    padding: 10px 20px 20px;
+    text-align: center;
+}
+
+/* Badge de notification style militaire */
+.notification-badge {
+    display: inline-block;
+    background-color: var(--warning-color);
+    color: var(--dark-bg);
+    font-size: 0.7rem;
+    padding: 1px 5px;
+    border-radius: 10px;
+    font-weight: bold;
+    margin-left: 5px;
+    vertical-align: top;
+}
+
+/* Tableau style militaire */
+.military-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.military-table th {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    text-align: left;
+    padding: 10px;
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+    border: 1px solid var(--border-color);
+}
+
+.military-table td {
+    padding: 8px 10px;
+    border: 1px solid var(--border-color);
+    background-color: var(--light-bg);
+}
+
+.military-table tr:nth-child(even) td {
+    background-color: var(--medium-bg);
+}
+
+.military-table tr:hover td {
+    background-color: rgba(183, 149, 11, 0.1);
+}
