@@ -1,0 +1,1573 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formation Squad Leader (SL) - AFR</title>
+    <style>
+        :root {
+            --primary-color: #1a2428;
+            --secondary-color: #2c3840;
+            --accent-color: #5d7a8c;
+            --light-color: #e6e6e6;
+            --dark-color: #333333;
+            --border-color: #414a50;
+            --success-color: #4a6c2a;
+            --warning-color: #9a7d2e;
+            --danger-color: #7a3434;
+            --info-color: #2d6277;
+            --text-color: #d6d6d6;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.5;
+            color: var(--text-color);
+            background-color: var(--dark-color);
+        }
+        
+        /* Container principal */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0;
+            background-color: var(--primary-color);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+        }
+        
+        /* En-tête */
+        header {
+            background-color: var(--primary-color);
+            color: var(--text-color);
+            padding: 20px;
+            text-align: center;
+            position: relative;
+            border-bottom: 2px solid var(--accent-color);
+        }
+        
+        .logo {
+            width: 150px;
+            height: auto;
+            margin: 0 auto 15px;
+            display: block;
+        }
+        
+        header h1 {
+            font-size: 1.8rem;
+            margin: 0;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        header h2 {
+            font-size: 1.5rem;
+            margin: 10px 0;
+            font-weight: 600;
+            color: var(--accent-color);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-bottom: none;
+        }
+        
+        header h2::before {
+            content: none;
+        }
+        
+        header p {
+            font-size: 1rem;
+            opacity: 0.8;
+            margin-top: 5px;
+            letter-spacing: 0.5px;
+        }
+        
+        /* Navigation */
+        nav {
+            background-color: var(--secondary-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .nav-btn {
+            color: var(--text-color);
+            text-decoration: none;
+            padding: 12px 15px;
+            display: inline-block;
+            font-weight: 500;
+            transition: background-color 0.3s;
+            cursor: pointer;
+            border: none;
+            background: none;
+            font-size: 0.9rem;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .nav-btn:hover, .nav-btn.active {
+            background-color: var(--accent-color);
+        }
+        
+        /* Contenu principal */
+        .content {
+            padding: 20px;
+        }
+        
+        .section {
+            display: none;
+            animation: fadeIn 0.5s;
+            margin-bottom: 30px;
+        }
+        
+        .section.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        /* Titres */
+        h2 {
+            color: var(--light-color);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--accent-color);
+            font-size: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        h2::before {
+            content: "//";
+            color: var(--accent-color);
+            margin-right: 10px;
+        }
+        
+        h3 {
+            color: var(--light-color);
+            margin-top: 25px;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        h3::before {
+            content: ">";
+            color: var(--accent-color);
+            margin-right: 10px;
+        }
+        
+        h4 {
+            color: var(--light-color);
+            margin-top: 20px;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+        
+        /* Texte */
+        p {
+            margin-bottom: 15px;
+        }
+        
+        ul, ol {
+            margin-bottom: 20px;
+            padding-left: 25px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        /* Cartes */
+        .card-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        @media (min-width: 768px) {
+            .card-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        .card {
+            border: 1px solid var(--border-color);
+            border-radius: 0;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            background-color: var(--secondary-color);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .card-header {
+            background-color: var(--accent-color);
+            color: var(--text-color);
+            padding: 10px 15px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .card-body {
+            padding: 15px;
+        }
+        
+        /* Alertes */
+        .alert {
+            padding: 15px;
+            margin-bottom: 20px;
+            border-left: 5px solid;
+            background-color: rgba(0, 0, 0, 0.2);
+        }
+        
+        .alert-title {
+            margin-bottom: 8px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .alert-icon {
+            margin-right: 10px;
+            font-weight: bold;
+        }
+        
+        .alert-info {
+            border-color: var(--info-color);
+        }
+        
+        .alert-warning {
+            border-color: var(--warning-color);
+        }
+        
+        .alert-danger {
+            border-color: var(--danger-color);
+        }
+        
+        .alert-success {
+            border-color: var(--success-color);
+        }
+        
+        /* Exercices */
+        .exercise {
+            background-color: rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--border-color);
+            border-left: 4px solid var(--accent-color);
+            padding: 15px;
+            margin: 20px 0;
+        }
+        
+        .exercise-title {
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--accent-color);
+            display: flex;
+            align-items: center;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .exercise-content {
+            margin-top: 10px;
+        }
+        
+        /* Sections spécifiques */
+        .checklist {
+            background-color: rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--border-color);
+            padding: 15px;
+            margin: 20px 0;
+        }
+        
+        .checklist-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 10px;
+        }
+        
+        .checklist-icon {
+            margin-right: 10px;
+            color: var(--success-color);
+        }
+        
+        /* METTT Box */
+        .mettt-box {
+            display: flex;
+            flex-direction: column;
+            margin: 20px 0;
+            gap: 10px;
+        }
+        
+        @media (min-width: 768px) {
+            .mettt-box {
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+            
+            .mettt-item {
+                flex: 1;
+                min-width: 180px;
+            }
+        }
+        
+        .mettt-item {
+            border: 1px solid var(--border-color);
+            padding: 15px;
+            background-color: rgba(0, 0, 0, 0.2);
+        }
+        
+        .mettt-letter {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--accent-color);
+            margin-bottom: 10px;
+            display: block;
+        }
+        
+        /* Coordination Box */
+        .coord-box {
+            display: flex;
+            flex-direction: column;
+            margin: 20px 0;
+            gap: 10px;
+        }
+        
+        @media (min-width: 768px) {
+            .coord-box {
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+            
+            .coord-item {
+                flex: 1;
+                min-width: 180px;
+            }
+        }
+        
+        .coord-item {
+            border: 1px solid var(--border-color);
+            padding: 15px;
+            background-color: rgba(0, 0, 0, 0.2);
+        }
+        
+        .coord-letter {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--accent-color);
+            margin-bottom: 10px;
+            display: block;
+        }
+        
+        /* Formations */
+        .formations-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        @media (min-width: 768px) {
+            .formations-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        .formation-card {
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+            background-color: var(--secondary-color);
+        }
+        
+        .formation-title {
+            background-color: var(--accent-color);
+            color: var(--text-color);
+            padding: 10px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .formation-body {
+            padding: 15px;
+        }
+        
+        .formation-diagram {
+            height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+            border: 1px solid var(--border-color);
+            background-color: rgba(0, 0, 0, 0.3);
+        }
+        
+        .formation-desc {
+            font-size: 0.9rem;
+        }
+        
+        /* Pied de page */
+        footer {
+            background-color: var(--primary-color);
+            color: var(--text-color);
+            text-align: center;
+            padding: 20px;
+            margin-top: 30px;
+            border-top: 1px solid var(--accent-color);
+        }
+        
+        footer p {
+            margin: 5px 0;
+            font-size: 0.9rem;
+        }
+        
+        /* Boutons */
+        .btn {
+            display: inline-block;
+            padding: 8px 16px;
+            background-color: var(--accent-color);
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .btn:hover {
+            background-color: var(--info-color);
+        }
+        
+        /* Impression */
+        @media print {
+            nav, .btn.print-btn {
+                display: none;
+            }
+            
+            .section {
+                display: block;
+                page-break-after: always;
+            }
+            
+            body {
+                font-size: 12pt;
+                background: white;
+                color: black;
+            }
+            
+            .container {
+                background-color: white;
+                box-shadow: none;
+            }
+            
+            header, footer {
+                background-color: white;
+                color: black;
+            }
+            
+            h2, h3, h4 {
+                color: black;
+            }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-container {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .nav-btn {
+                padding: 10px;
+                font-size: 0.75rem;
+            }
+            
+            header h1 {
+                font-size: 1.4rem;
+            }
+            
+            header h2 {
+                font-size: 1.2rem;
+            }
+            
+            .logo {
+                width: 120px;
+            }
+            
+            .content {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- En-tête -->
+        <header>
+           
+            <h1>École des Sous-Officiers de l'AFR</h1>
+            <h2>Formation Squad Leader (SL) - Sergent -</h2>
+            <p>Guide opérationnel pour commandants d'escouade</p>
+        </header>
+        
+        <!-- Navigation -->
+        <nav>
+            <div class="nav-container">
+                <button class="nav-btn active" data-section="intro">Intro</button>
+                <button class="nav-btn" data-section="role">Rôle</button>
+                <button class="nav-btn" data-section="comm">Comm</button>
+                <button class="nav-btn" data-section="mettt">METTT</button>
+                <button class="nav-btn" data-section="briefing">Briefing</button>
+                <button class="nav-btn" data-section="tactics">Tactiques</button>
+                <button class="nav-btn" data-section="coord">Coordination</button>
+                <button class="nav-btn" data-section="discord">Discord</button>
+                <button class="nav-btn" data-section="evaluation">Évaluation</button>
+                <button class="nav-btn" data-section="conclusion">Conclusion</button>
+            </div>
+        </nav>
+        
+        <!-- Contenu principal -->
+        <div class="content">
+            <!-- Introduction -->
+            <section id="intro" class="section active">
+                <h2>Objectif du document</h2>
+                
+                <p>Ce document est une synthèse des fondamentaux du rôle de Squad Leader (SL) adaptée à l'AFR. Il définit les principes clés et les bonnes pratiques à appliquer dans le commandement d'escouade, la coordination tactique et la gestion des effectifs.</p>
+                
+                <div class="alert alert-info">
+                    <div class="alert-title"><span class="alert-icon">[INFO]</span> Rôle essentiel</div>
+                    <p>Le SL est le pivot central d'une escouade : il est responsable de la coordination opérationnelle et stratégique de son unité, et sert d'intermédiaire entre le Commandement (CMD) et ses Team Leaders (TL). Sa mission principale est d'assurer la cohésion de l'escouade, de coordonner les actions tactiques et de garantir l'atteinte des objectifs assignés.</p>
+                </div>
+                
+                <h3>Structure de la formation</h3>
+                <ol>
+                    <li><strong>Rôle et responsabilités du Squad Leader</strong> - Leadership, commandement et gestion d'escouade</li>
+                    <li><strong>Communication tactique avancée</strong> - Gestion des canaux multiples et coordination efficace</li>
+                    <li><strong>Analyse stratégique METTT étendue</strong> - Planification et anticipation à l'échelle de l'escouade</li>
+                    <li><strong>Briefing et préparation d'escouade</strong> - Organisation et transmission des ordres</li>
+                    <li><strong>Tactiques d'escouade avancées</strong> - Mouvements coordonnés et manœuvres complexes</li>
+                    <li><strong>Coordination inter-équipes</strong> - Synchronisation et efficacité opérationnelle</li>
+                    <li><strong>Gestion des effectifs et administration Discord</strong> - Développement et suivi de l'escouade</li>
+                    <li><strong>Évaluation et développement des subordonnés</strong> - Formation continue et promotion</li>
+                </ol>
+                
+                <div class="alert alert-success">
+                    <div class="alert-title"><span class="alert-icon">[OBJECTIF]</span> Formation</div>
+                    <p>À l'issue de cette formation, vous serez capable de diriger efficacement une escouade complète, de coordonner les actions de plusieurs Team Leaders, d'établir des plans tactiques cohérents et de développer les compétences de vos subordonnés.</p>
+                </div>
+            </section>
+            
+            <!-- Rôle et responsabilités -->
+            <section id="role" class="section">
+                <h2>1. Rôle et responsabilités du SL</h2>
+                
+                <div class="alert alert-info">
+                    <div class="alert-title"><span class="alert-icon">[PRINCIPE]</span> Fondamental</div>
+                    <p>Un bon SL est un stratège et un coordinateur, capable de transformer des ordres généraux en actions tactiques précises.</p>
+                </div>
+                
+                <h3>Leadership et commandement</h3>
+                <ul>
+                    <li>Recevoir et interpréter les directives du Commandement (CMD).</li>
+                    <li>Développer et communiquer des plans tactiques clairs aux Team Leaders.</li>
+                    <li>Prendre des décisions autonomes et adaptées à la situation opérationnelle.</li>
+                    <li>Maintenir la cohésion et le moral de l'escouade.</li>
+                    <li>Servir d'exemple et incarner les valeurs de l'unité.</li>
+                </ul>
+                
+                <h3>Positionnement opérationnel</h3>
+                <ul>
+                    <li>Se placer à un point stratégique permettant la supervision de l'escouade.</li>
+                    <li>Conserver une vision d'ensemble du champ de bataille.</li>
+                    <li>Maintenir un contact régulier avec les TL.</li>
+                    <li>Éviter l'engagement direct sauf en cas de nécessité absolue.</li>
+                </ul>
+                
+                <div class="card-container">
+                    <div class="card">
+                        <div class="card-header">Position stratégique du SL</div>
+                        <div class="card-body">
+                            <p>En tant que SL, vous devez vous positionner de manière à :</p>
+                            <ul>
+                                <li>Avoir une vue globale sur l'escouade et le terrain</li>
+                                <li>Rester en communication avec le CMD et les TL</li>
+                                <li>Évaluer la progression vers les objectifs</li>
+                                <li>Être en mesure d'intervenir rapidement en cas de besoin</li>
+                                <li>Anticiper les mouvements et évolutions de la situation</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-header">Cycle de commandement</div>
+                        <div class="card-body">
+                            <p>La prise de décision du SL suit un cycle continu :</p>
+                            <ol>
+                                <li>Observation - Recueillir les informations du terrain</li>
+                                <li>Orientation - Analyser la situation tactique</li>
+                                <li>Décision - Choisir le plan d'action optimal</li>
+                                <li>Action - Donner des ordres précis</li>
+                                <li>Contrôle - Vérifier l'exécution et adapter si nécessaire</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+                
+                <h3>Gestion de l'escouade</h3>
+                <ul>
+                    <li>Structurer l'escouade en équipes équilibrées et complémentaires.</li>
+                    <li>Attribuer les rôles et spécialités selon les compétences individuelles.</li>
+                    <li>Veiller à l'équipement et aux ressources disponibles.</li>
+                    <li>Organiser les rotations et relèves si nécessaire.</li>
+                    <li>Gérer les situations de crise et pertes potentielles.</li>
+                </ul>
+                
+                <div class="exercise">
+                    <div class="exercise-title"><span class="alert-icon">[EXERCICE]</span> Leadership</div>
+                    <div class="exercise-content">
+                        <p>Simulation de commandement d'escouade face à un changement de situation.</p>
+                        <p>Scénario : Votre escouade (2 équipes de 4 hommes) a pour mission de sécuriser un carrefour stratégique. Alors que vous déployez vos équipes, vous recevez l'information que des forces ennemies importantes progressent rapidement vers votre position. Élaborez rapidement un plan alternatif, réorganisez vos équipes et donnez les ordres appropriés aux TL.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Communication -->
+            <section id="comm" class="section">
+                <h2>2. Communication tactique avancée</h2>
+                
+                <div class="alert alert-info">
+                    <div class="alert-title"><span class="alert-icon">[PRINCIPE]</span> Fondamental</div>
+                    <p>La communication est l'outil principal du SL. Une transmission claire et précise est essentielle pour l'efficacité opérationnelle.</p>
+                </div>
+                
+                <h3>Gestion des canaux de communication</h3>
+                <ul>
+                    <li>Maintenir les communications distinctes entre Command, SL et TL.</li>
+                    <li>Établir des priorités claires pour les transmissions.</li>
+                    <li>Filtrer et synthétiser les informations pertinentes.</li>
+                    <li>Vérifier la compréhension des ordres transmis.</li>
+                </ul>
+                
+                <h3>Structure de communication hiérarchique</h3>
+                
+                <div class="card-container">
+                    <div class="card">
+                        <div class="card-header">Communication descendante</div>
+                        <div class="card-body">
+                            <p>Du SL vers les TL :</p>
+                            <ul>
+                                <li>Objectifs clairs et précis</li>
+                                <li>Ordres directs et sans ambiguïté</li>
+                                <li>Contexte stratégique nécessaire</li>
+                                <li>Paramètres d'exécution (timing, ROE)</li>
+                                <li>Questions pour confirmation</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-header">Communication ascendante</div>
+                        <div class="card-body">
+                            <p>Des TL vers le SL :</p>
+                            <ul>
+                                <li>Rapports de situation (SITREP)</li>
+                                <li>Informations critiques immédiates</li>
+                                <li>Demandes de ressources ou de support</li>
+                                <li>Points bloquants ou difficultés</li>
+                                <li>Suggestions tactiques pertinentes</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <h3>Format SITREP étendu pour SL</h3>
+                <div class="card-container">
+                    <div class="card">
+                        <div class="card-header">Format SITREP vers Command</div>
+                        <div class="card-body">
+                            <ol>
+                                <li><strong>Identité</strong> - "Sierra One ici"</li>
+                                <li><strong>Position</strong> - "Escouade en position Grizzly"</li>
+                                <li><strong>Situation</strong> - "Contact ennemi/En progression/En sécurité"</li>
+                                <li><strong>Ennemis</strong> - "Présence estimée à une section, véhicules légers"</li>
+                                <li><strong>Forces</strong> - "Effectifs à 80%, 2 blessés légers, munitions critiques pour Alpha"</li>
+                                <li><strong>Actions</strong> - "Établissement d'un périmètre, préparation assaut flanc Est"</li>
+                                <li><strong>Besoins</strong> - "Demande appui feu/médical/logistique"</li>
+                            </ol>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-header">Exemple de communication SL</div>
+                        <div class="card-body">
+                            <p><strong>SL à CMD : </strong>"Command, ici Sierra One. SITREP. Escouade en position Grizzly. Contact visuel avec force ennemie estimée à 1 section d'infanterie et 2 véhicules légers, 500 mètres au Nord-Est. Nous avons deux blessés légers, Alpha demande réapprovisionnement. Maintenons position défensive et préparons assaut sur flanc Est. Demandons autorisation et support feu indirect. À vous."</p>
+                            <p><strong>SL à TL : </strong>"Alpha Leader, ici Sierra One. Prenez position de couverture sur crête Nord. Bravo Leader va préparer mouvement de flanc à votre signal. Confirmez quand en position. Terminé."</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <h3>Procédures en cas de rupture de communication</h3>
+                <ul>
+                    <li>Établir des procédures alternatives (signaux visuels, courriers, points de rendez-vous).</li>
+                    <li>Définir un plan d'action autonome pour chaque équipe en cas de perte de contact.</li>
+                    <li>Prévoir une chaîne de commandement claire en cas d'incapacité du SL.</li>
+                </ul>
+                
+                <div class="alert alert-warning">
+                    <div class="alert-title"><span class="alert-icon">[ATTENTION]</span> Important</div>
+                    <p>Le SL doit toujours maintenir la discipline radio au sein de son escouade et être le point central de coordination pour la transmission des informations entre les niveaux hiérarchiques.</p>
+                </div>
+                
+                <div class="exercise">
+                    <div class="exercise-title"><span class="alert-icon">[EXERCICE]</span> Communication</div>
+                    <div class="exercise-content">
+                        <p>Simulation de gestion des communications multiples sous pression.</p>
+                        <p>Scénario : Votre escouade est divisée en trois équipes sur différents points d'une zone urbaine. Simultanément, vous recevez : un rapport de contact ennemi d'Alpha Team, une demande urgente de munitions de Bravo Team, et un ordre de redéploiement du Command. Démontrez comment vous gérez ces communications simultanées, établissez les priorités et transmettez vos ordres.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- METTT étendu -->
+            <section id="mettt" class="section">
+                <h2>3. Analyse stratégique - METTT étendu</h2>
+                
+                <div class="alert alert-info">
+                    <div class="alert-title"><span class="alert-icon">[PRINCIPE]</span> Fondamental</div>
+                    <p>L'analyse METTT à l'échelle de l'escouade permet d'anticiper les besoins tactiques et d'optimiser l'utilisation des ressources.</p>
+                </div>
+                
+                <p>Le SL doit appliquer le METTT à un niveau supérieur, en intégrant les analyses de ses TL et en considérant l'ensemble de l'escouade :</p>
+                
+                <div class="mettt-box">
+                    <div class="mettt-item">
+                        <span class="mettt-letter">M</span>
+                        <h4>Mission</h4>
+                        <p>Objectif global de l'escouade et sous-objectifs pour chaque équipe.</p>
+                    </div>
+                    
+                    <div class="mettt-item">
+                        <span class="mettt-letter">E</span>
+                        <h4>Ennemi</h4>
+                        <p>Analyse complète des forces adverses, capacités, intentions et tactiques probables.</p>
+                    </div>
+                    
+                    <div class="mettt-item">
+                        <span class="mettt-letter">T</span>
+                        <h4>Terrain</h4>
+                        <p>Évaluation stratégique du secteur, points clés, axes de progression et positions défensives.</p>
+                    </div>
+                    
+                    <div class="mettt-item">
+                        <span class="mettt-letter">T</span>
+                        <h4>Temps</h4>
+                        <p>Planification temporelle, synchronisation des actions et gestion des phases d'opération.</p>
+                    </div>
+                    
+                    <div class="mettt-item">
+                        <span class="mettt-letter">T</span>
+                        <h4>Troupe</h4>
+                        <p>Évaluation des capacités combinées de l'escouade, répartition optimale des ressources et des spécialités.</p>
+                    </div>
+                </div>
+                
+                <h3>Application stratégique du METTT</h3>
+                
+                <div class="card-container">
+                    <div class="card">
+                        <div class="card-header">Questions stratégiques du SL</div>
+                        <div class="card-body">
+                            <ul>
+                                <li><strong>Mission :</strong> Comment diviser l'objectif global en tâches réalisables pour chaque équipe ?</li>
+                                <li><strong>Ennemi :</strong> Quelles sont ses forces et faiblesses principales ? Comment répartir mes équipes pour exploiter ces faiblesses ?</li>
+                                <li><strong>Terrain :</strong> Quels sont les points stratégiques à contrôler ? Quels itinéraires offrent les meilleures approches ?</li>
+                                <li><strong>Temps :</strong> Comment séquencer les actions pour maximiser l'efficacité ? Quels délais critiques doivent être anticipés ?</li>
+                                <li><strong>Troupe :</strong> Comment équilibrer les capacités entre équipes ? Quels renforts pourraient être nécessaires ?</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-header">Planification d'escouade</div>
+                        <div class="card-body">
+                            <p>Un plan d'escouade complet inclut :</p>
+                            <ul>
+                                <li>Plan principal et plans alternatifs (A, B, C)</li>
+                                <li>Points de décision critiques</li>
+                                <li>Coordination inter-équipes</li>
+                                <li>Mesures en cas d'imprévu</li>
+                                <li>Critères de réussite et d'échec</li>
+                                <li>Procédures d'urgence et d'extraction</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <h3>Intégration des analyses des TL</h3>
+                <ul>
+                    <li>Recueillir et synthétiser les analyses METTT de chaque TL.</li>
+                    <li>Identifier les points communs et les divergences d'appréciation.</li>
+                    <li>Résoudre les contradictions potentielles.</li>
+                    <li>Établir une vision tactique unifiée.</li>
+                </ul>
+                
+                <div class="exercise">
+                    <div class="exercise-title"><span class="alert-icon">[EXERCICE]</span> Planification</div>
+                    <div class="exercise-content">
+                        <p>Élaboration d'un plan complet d'escouade basé sur METTT.</p>
+                        <p>Scénario : Votre escouade (3 équipes de 4 hommes) doit sécuriser un complexe de bâtiments dans une zone semi-urbaine. Les renseignements indiquent une présence ennemie modérée avec plusieurs points fortifiés. Vous disposez de 3 heures avant la nuit. Élaborez un plan complet incluant : répartition des objectifs entre équipes, axes d'approche, coordination des mouvements, timing des actions et procédures en cas de contact.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Briefing -->
+            <section id="briefing" class="section">
+                <h2>4. Briefing et préparation d'escouade</h2>
+                
+                <div class="alert alert-info">
+                    <div class="alert-title"><span class="alert-icon">[PRINCIPE]</span> Fondamental</div>
+                    <p>Un briefing d'escouade efficace garantit que chaque membre comprend le plan global et son rôle spécifique.</p>
+                </div>
+                
+                <h3>Structure du briefing d'escouade</h3>
+                <ul>
+                    <li>Présentation claire de la situation et du contexte opérationnel.</li>
+                    <li>Énoncé de la mission globale et des objectifs spécifiques.</li>
+                    <li>Explication détaillée du plan et des phases d'opération.</li>
+                    <li>Attribution des tâches à chaque équipe.</li>
+                    <li>Coordination des mouvements et des actions.</li>
+                    <li>Établissement des procédures de communication.</li>
+                    <li>Anticipation des imprévus et plans d'urgence.</li>
+                </ul>
+                
+                <h3>Méthode de briefing SMEAC</h3>
+                
+                <div class="card-container">
+                    <div class="card">
+                        <div class="card-header">S - Situation</div>
+                        <div class="card-body">
+                            <ul>
+                                <li>Contexte stratégique</li>
+                                <li>Forces amies et leurs positions</li>
+                                <li>Forces ennemies et leurs capacités</li>
+                                <li>Conditions environnementales</li>
+                                <li>Autres facteurs pertinents</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-header">M - Mission</div>
+                        <div class="card-body">
+                            <ul>
+                                <li>Énoncé clair de l'objectif principal</li>
+                                <li>Description du résultat attendu</li>
+                                <li>Importance dans le cadre opérationnel global</li>
+                                <li>Contraintes et considérations spéciales</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-header">E - Exécution</div>
+                        <div class="card-body">
+                            <ul>
+                                <li>Concept d'opération détaillé</li>
+                                <li>Phases de la mission</li>
+                                <li>Tâches spécifiques à chaque équipe</li>
+                                <li>Coordination des actions</li>
+                                <li>Plans de contingence</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-header">A - Administration</div>
+                        <div class="card-body">
+                            <ul>
+                                <li>Équipement et armement requis</li>
+                                <li>Logistique et ravitaillement</li>
+                                <li>Procédures médicales</li>
+                                <li>Gestion des prisonniers</li>
+                                <li>Points de service et soutien</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-header">C - Commandement & Communication</div>
+                        <div class="card-body">
+                            <ul>
+                                <li>Structure de commandement</li>
+                                <li>Position des leaders</li>
+                                <li>Fréquences et canaux radio</li>
+                                <li>Procédures de communication</li>
+                                <li>Signaux alternatifs</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <h3>Validation de la compréhension</h3>
+                <ul>
+                    <li>Poser des questions spécifiques aux TL pour vérifier leur compréhension.</li>
+                    <li>Demander aux TL de reformuler leurs missions respectives.</li>
+                    <li>Tester des scénarios hypothétiques pour valider les réactions prévues.</li>
+                    <li>S'assurer que tous les points d'interrogation sont résolus avant le déploiement.</li>
+                </ul>
+                
+                <div class="exercise">
+                    <div class="exercise-title"><span class="alert-icon">[EXERCICE]</span> Briefing</div>
+                    <div class="exercise-content">
+                        <p>Préparation et exécution d'un briefing d'escouade complet.</p>
+                        <p>Scénario : Votre escouade doit mener une opération de reconnaissance en force sur un village suspecté d'abriter un PC ennemi. Préparez et présentez un briefing SMEAC complet incluant les rôles de chaque équipe, les phases d'opération, et les procédures de communication. Après le briefing, interrogez les TL pour vérifier leur compréhension du plan.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Tactiques avancées -->
+            <section id="tactics" class="section">
+                <h2>5. Tactiques d'escouade avancées</h2>
+                
+                <div class="alert alert-info">
+                    <div class="alert-title"><span class="alert-icon">[PRINCIPE]</span> Fondamental</div>
+                    <p>La maîtrise des tactiques avancées permet au SL d'optimiser l'efficacité opérationnelle de son escouade.</p>
+                </div>
+                
+                <h3>Manœuvres d'escouade</h3>
+                <ul>
+                    <li>Déploiement en enveloppement (flanc ou encerclement).</li>
+                    <li>Mouvement en bonds successifs avec appui mutuel.</li>
+                    <li>Tactiques d'assaut coordonné.</li>
+                    <li>Opérations défensives en profondeur.</li>
+                    <li>Embuscades et contre-embuscades.</li>
+                </ul>
+                
+                <div class="formations-container">
+                    <div class="formation-card">
+                        <div class="formation-title">Enveloppement simple</div>
+                        <div class="formation-body">
+                            <div class="formation-diagram">
+                                <svg width="200" height="150" viewBox="0 0 200 150">
+                                    <!-- Position ennemie -->
+                                    <rect x="90" y="30" width="20" height="20" fill="#7a3434" />
+                                    
+                                    <!-- Équipe de fixation -->
+                                    <rect x="90" y="100" width="20" height="20" fill="#5d7a8c" />
+                                    <line x1="100" y1="100" x2="100" y2="60" stroke="#5d7a8c" stroke-width="2" stroke-dasharray="5,5" />
+                                    
+                                    <!-- Équipe de manœuvre -->
+                                    <rect x="160" y="100" width="20" height="20" fill="#4a6c2a" />
+                                    <path d="M160,100 C130,90 130,60 110,40" stroke="#4a6c2a" stroke-width="2" fill="none" stroke-dasharray="5,5" />
+                                    
+                                    <!-- Légendes -->
+                                    <text x="90" y="135" font-size="10" fill="#5d7a8c">Fixation</text>
+                                    <text x="160" y="135" font-size="10" fill="#4a6c2a">Manœuvre</text>
+                                    <text x="90" y="25" font-size="10" fill="#7a3434">Ennemi</text>
+                                </svg>
+                            </div>
+                            <p class="formation-desc">Une équipe fixe l'ennemi frontalement pendant qu'une seconde manœuvre sur le flanc. Efficace contre des positions défensives.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="formation-card">
+                        <div class="formation-title">Appui mutuel</div>
+                        <div class="formation-body">
+                            <div class="formation-diagram">
+                                <svg width="200" height="150" viewBox="0 0 200 150">
+                                    <!-- Terrain -->
+                                    <rect x="0" y="0" width="200" height="150" fill="none" />
+                                    
+                                    <!-- Positions ennemies -->
+                                    <rect x="30" y="30" width="15" height="15" fill="#7a3434" />
+                                    <rect x="160" y="40" width="15" height="15" fill="#7a3434" />
+                                    
+                                    <!-- Équipe Alpha -->
+                                    <rect x="40" y="100" width="15" height="15" fill="#5d7a8c" />
+                                    <line x1="47" y1="100" x2="38" y2="55" stroke="#5d7a8c" stroke-width="2" stroke-dasharray="5,5" />
+                                    <line x1="55" y1="100" x2="160" y2="48" stroke="#5d7a8c" stroke-width="1" stroke-dasharray="2,2" />
+                                    
+                                    <!-- Équipe Bravo -->
+                                    <rect x="140" y="100" width="15" height="15" fill="#4a6c2a" />
+                                    <line x1="147" y1="100" x2="167" y2="55" stroke="#4a6c2a" stroke-width="2" stroke-dasharray="5,5" />
+                                    <line x1="140" y1="100" x2="45" y2="38" stroke="#4a6c2a" stroke-width="1" stroke-dasharray="2,2" />
+                                    
+                                    <!-- Légendes -->
+                                    <text x="40" y="130" font-size="10" fill="#5d7a8c">Alpha</text>
+                                    <text x="140" y="130" font-size="10" fill="#4a6c2a">Bravo</text>
+                                </svg>
+                            </div>
+                            <p class="formation-desc">Chaque équipe peut engager sa cible principale tout en couvrant l'autre équipe. Permet une progression sécurisée et une flexibilité tactique.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="formation-card">
+                        <div class="formation-title">Défense en profondeur</div>
+                        <div class="formation-body">
+                            <div class="formation-diagram">
+                                <svg width="200" height="150" viewBox="0 0 200 150">
+                                    <!-- Terrain -->
+                                    <rect x="0" y="0" width="200" height="150" fill="none" />
+                                    
+                                    <!-- Flèche d'attaque ennemie -->
+                                    <path d="M0,75 L40,75" stroke="#7a3434" stroke-width="3" />
+                                    <path d="M40,75 L30,65 M40,75 L30,85" stroke="#7a3434" stroke-width="3" />
+                                    
+                                    <!-- Positions défensives -->
+                                    <circle cx="60" cy="55" r="8" fill="#5d7a8c" />
+                                    <circle cx="60" cy="95" r="8" fill="#5d7a8c" />
+                                    
+                                    <circle cx="100" cy="40" r="8" fill="#4a6c2a" />
+                                    <circle cx="100" cy="75" r="8" fill="#4a6c2a" />
+                                    <circle cx="100" cy="110" r="8" fill="#4a6c2a" />
+                                    
+                                    <circle cx="150" cy="75" r="8" fill="#2d6277" />
+                                    
+                                    <!-- Lignes de défense -->
+                                    <path d="M50,30 L50,120" stroke="#5d7a8c" stroke-width="1" stroke-dasharray="5,5" />
+                                    <path d="M90,30 L90,120" stroke="#4a6c2a" stroke-width="1" stroke-dasharray="5,5" />
+                                    <path d="M140,30 L140,120" stroke="#2d6277" stroke-width="1" stroke-dasharray="5,5" />
+                                    
+                                    <!-- Légendes -->
+                                    <text x="50" y="140" font-size="9" fill="#5d7a8c">1ère ligne</text>
+                                    <text x="90" y="140" font-size="9" fill="#4a6c2a">2ème ligne</text>
+                                    <text x="140" y="140" font-size="9" fill="#2d6277">Réserve</text>
+                                </svg>
+                            </div>
+                            <p class="formation-desc">Établissement de lignes défensives échelonnées permettant d'absorber et de canaliser une attaque ennemie. Offre flexibilité et résistance.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="formation-card">
+                        <div class="formation-title">Mouvement en équipes croisées</div>
+                        <div class="formation-body">
+                            <div class="formation-diagram">
+                                <svg width="200" height="150" viewBox="0 0 200 150">
+                                    <!-- Terrain -->
+                                    <rect x="0" y="0" width="200" height="150" fill="none" />
+                                    
+                                    <!-- Positions de départ -->
+                                    <rect x="20" y="40" width="15" height="15" fill="#5d7a8c" />
+                                    <rect x="20" y="100" width="15" height="15" fill="#4a6c2a" />
+                                    
+                                    <!-- Positions intermédiaires -->
+                                    <rect x="90" y="40" width="15" height="15" fill="#5d7a8c" opacity="0.5" />
+                                    <rect x="90" y="100" width="15" height="15" fill="#4a6c2a" opacity="0.5" />
+                                    
+                                    <!-- Positions finales -->
+                                    <rect x="170" y="40" width="15" height="15" fill="#4a6c2a" />
+                                    <rect x="170" y="100" width="15" height="15" fill="#5d7a8c" />
+                                    
+                                    <!-- Mouvements -->
+                                    <path d="M35,47 L90,47 L90,100 L170,100" stroke="#5d7a8c" stroke-width="2" fill="none" />
+                                    <path d="M35,107 L90,107 L90,47 L170,47" stroke="#4a6c2a" stroke-width="2" fill="none" />
+                                    
+                                    <!-- Légendes -->
+                                    <text x="15" y="30" font-size="10" fill="#5d7a8c">Alpha</text>
+                                    <text x="15" y="130" font-size="10" fill="#4a6c2a">Bravo</text>
+                                </svg>
+                            </div>
+                            <p class="formation-desc">Mouvement coordonné où les équipes changent de couloir en cours de progression. Utile pour s'adapter aux changements de terrain ou déjouer la surveillance ennemie.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <h3>Adaptation des tactiques au terrain</h3>
+                <div class="card-container">
+                    <div class="card">
+                        <div class="card-header">Milieu urbain</div>
+                        <div class="card-body">
+                            <ul>
+                                <li>Progression par bonds entre bâtiments</li>
+                                <li>Sécurisation pièce par pièce</li>
+                                <li>Contrôle des hauteurs et toits</li>
+                                <li>Utilisation de corridors de mouvement</li>
+                                <li>Attention aux tireurs embusqués</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-header">Terrain ouvert</div>
+                        <div class="card-body">
+                            <ul>
+                                <li>Déplacements par défilement de terrain</li>
+                                <li>Utilisation maximale des couverts disponibles</li>
+                                <li>Dispersion adaptée pour minimiser les pertes</li>
+                                <li>Approche indirecte vers les objectifs</li>
+                                <li>Maintien d'un appui feu lors des déplacements</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-header">Forêt dense</div>
+                        <div class="card-body">
+                            <ul>
+                                <li>Formations adaptées à la visibilité réduite</li>
+                                <li>Maintien du contact visuel entre équipes</li>
+                                <li>Établissement de points de ralliement fréquents</li>
+                                <li>Vigilance accrue contre les embuscades</li>
+                                <li>Utilisation de repères naturels pour la navigation</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-header">Terrain montagneux</div>
+                        <div class="card-body">
+                            <ul>
+                                <li>Contrôle des points hauts et cols</li>
+                                <li>Gestion de l'effort physique des troupes</li>
+                                <li>Adaptation des formations aux dénivelés</li>
+                                <li>Attention aux échos et à la propagation du son</li>
+                                <li>Préparation aux changements rapides de météo</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="exercise">
+                    <div class="exercise-title"><span class="alert-icon">[EXERCICE]</span> Tactiques</div>
+                    <div class="exercise-content">
+                        <p>Élaboration et exécution d'un plan tactique complexe.</p>
+                        <p>Scénario : Votre escouade doit neutraliser un PC ennemi situé dans un petit hameau fortifié. Vous disposez de deux équipes de combat et d'une équipe de support. Le terrain offre des approches par vallée au nord et par collines boisées au sud. Développez un plan tactique complet incluant: manœuvre d'approche, positionnement des équipes, séquence d'actions et coordination du feu.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Coordination -->
+            <section id="coord" class="section">
+                <h2>6. Coordination inter-équipes</h2>
+                
+                <div class="alert alert-info">
+                    <div class="alert-title"><span class="alert-icon">[PRINCIPE]</span> Fondamental</div>
+                    <p>La coordination efficace des équipes est l'essence même du rôle de SL et démultiplie la puissance opérationnelle de l'escouade.</p>
+                </div>
+                
+                <h3>Principes de coordination</h3>
+                <ul>
+                    <li>Synchronisation temporelle des actions pour maximiser l'impact.</li>
+                    <li>Complémentarité des efforts et optimisation des ressources.</li>
+                    <li>Attribution de zones de responsabilité clairement définies.</li>
+                    <li>Établissement de procédures d'appui mutuel.</li>
+                    <li>Gestion des transitions entre phases d'opération.</li>
+                </ul>
+                
+                <div class="coord-box">
+                    <div class="coord-item">
+                        <span class="coord-letter">S</span>
+                        <h4>Synchronisation</h4>
+                        <p>Coordination temporelle précise des actions.</p>
+                    </div>
+                    
+                    <div class="coord-item">
+                        <span class="coord-letter">A</span>
+                        <h4>Articulation</h4>
+                        <p>Organisation structurée des équipes et répartition des tâches.</p>
+                    </div>
+                    
+                    <div class="coord-item">
+                        <span class="coord-letter">C</span>
+                        <h4>Communication</h4>
+                        <p>Partage d'informations fluide et continu entre équipes.</p>
+                    </div>
+                    
+                    <div class="coord-item">
+                        <span class="coord-letter">R</span>
+                        <h4>Réactivité</h4>
+                        <p>Capacité d'adaptation rapide aux changements de situation.</p>
+                    </div>
+                </div>
+                
+                <h3>Méthodes de coordination tactique</h3>
+                
+                <div class="card-container">
+                    <div class="card">
+                        <div class="card-header">Coordination par objectifs</div>
+                        <div class="card-body">
+                            <p>Attribution d'objectifs spécifiques à chaque équipe :</p>
+                            <ul>
+                                <li>Définition claire des résultats attendus</li>
+                                <li>Autonomie d'exécution pour les TL</li>
+                                <li>Responsabilité de zone ou de fonction</li>
+                                <li>Contrôle par points de décision</li>
+                                <li>Flexibilité opérationnelle maximale</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-header">Coordination par phases</div>
+                        <div class="card-body">
+                            <p>Séquençage temporel des opérations :</p>
+                            <ul>
+                                <li>Division de la mission en étapes distinctes</li>
+                                <li>Points de contrôle entre chaque phase</li>
+                                <li>Synchronisation des actions critiques</li>
+                                <li>Gestion des transitions</li>
+                                <li>Adaptation possible du plan entre phases</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-header">Coordination par points de référence</div>
+                        <div class="card-body">
+                            <p>Utilisation de repères tactiques communs :</p>
+                            <ul>
+                                <li>Établissement de points de repère numérotés</li>
+                                <li>Désignation précise des zones d'action</li>
+                                <li>Référentiel commun pour rapports de position</li>
+                                <li>Facilitation des appuis et manœuvres</li>
+                                <li>Clarté accrue des communications</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-header">Coordination par relais</div>
+                        <div class="card-body">
+                            <p>Transmission progressive de la responsabilité tactique :</p>
+                            <ul>
+                                <li>Passage de témoin entre équipes</li>
+                                <li>Continuité des opérations</li>
+                                <li>Couverture mutuelle pendant les transitions</li>
+                                <li>Rotation des équipes sur objectif</li>
+                                <li>Maintien de la pression opérationnelle</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <h3>Gestion des conflits tactiques</h3>
+                <ul>
+                    <li>Identifier rapidement les contradictions potentielles entre plans d'équipe.</li>
+                    <li>Établir des priorités claires en cas d'objectifs concurrents.</li>
+                    <li>Définir précisément les zones d'action pour éviter les chevauchements.</li>
+                    <li>Prévenir les tirs fratricides par des mesures de coordination du feu.</li>
+                    <li>Maintenir une conscience situationnelle partagée entre équipes.</li>
+                </ul>
+                
+                <div class="exercise">
+                    <div class="exercise-title"><span class="alert-icon">[EXERCICE]</span> Coordination</div>
+                    <div class="exercise-content">
+                        <p>Planification et exécution d'une opération multi-équipes coordonnée.</p>
+                        <p>Scénario : Votre escouade doit mener une opération complexe impliquant simultanément : une équipe en défense d'un point stratégique, une équipe en reconnaissance offensive, et une équipe en support mobile. Développez un plan complet de coordination précisant : les mécanismes de synchronisation, les procédures de communication inter-équipes, les mesures de déconfliction des tirs, et la gestion des contingences.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Gestion Discord -->
+            <section id="discord" class="section">
+                <h2>7. Gestion des effectifs et administration Discord</h2>
+                
+                <div class="alert alert-info">
+                    <div class="alert-title"><span class="alert-icon">[PRINCIPE]</span> Fondamental</div>
+                    <p>Le SL est le référent et responsable premier de son escouade, chargé du développement des compétences et de la cohésion du groupe.</p>
+                </div>
+                
+                <h3>Responsabilités administratives du SL</h3>
+                <ul>
+                    <li>Organisation structurelle de l'escouade en équipes équilibrées.</li>
+                    <li>Suivi des présences et de l'activité des membres.</li>
+                    <li>Évaluation continue des performances et du potentiel.</li>
+                    <li>Gestion du recrutement et de l'intégration des nouveaux membres.</li>
+                    <li>Planification des sessions d'entraînement et exercices.</li>
+                    <li>Administration des canaux Discord dédiés à l'escouade.</li>
+                </ul>
+                
+                <h3>Développement des soldats et promotion</h3>
+                
+                <div class="card-container">
+                    <div class="card">
+                        <div class="card-header">Cycle de développement</div>
+                        <div class="card-body">
+                            <ol>
+                                <li><strong>Évaluation</strong> - Identifier forces, faiblesses et potentiel</li>
+                                <li><strong>Formation</strong> - Proposer des entraînements ciblés</li>
+                                <li><strong>Pratique</strong> - Offrir des opportunités d'application</li>
+                                <li><strong>Feedback</strong> - Fournir un retour constructif</li>
+                                <li><strong>Promotion</strong> - Recommander les soldats méritants</li>
+                            </ol>
+                            <p>Le SL est l'initiateur principal de ce processus, s'appuyant sur ses TL pour l'exécution et le suivi.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-header">Collaboration avec les TL</div>
+                        <div class="card-body">
+                            <p>Le SL doit :</p>
+                            <ul>
+                                <li>Définir les objectifs de développement pour chaque équipe</li>
+                                <li>Fournir aux TL les ressources et l'autorité nécessaires</li>
+                                <li>Recevoir et analyser les rapports d'évaluation des TL</li>
+                                <li>Coordonner les efforts de formation entre équipes</li>
+                                <li>Valider les recommandations de promotion des TL</li>
+                                <li>Assurer l'équité et la cohérence des évaluations</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <h3>Gestion Discord avancée</h3>
+                <ul>
+                    <li>Structurer les canaux par équipe et par fonction.</li>
+                    <li>Établir des canaux dédiés aux briefings, debriefings et formations.</li>
+                    <li>Gérer les permissions et accès selon les rôles et responsabilités.</li>
+                    <li>Organiser des événements réguliers pour maintenir la cohésion.</li>
+                    <li>Documenter les procédures opérationnelles et leçons apprises.</li>
+                    <li>Superviser l'activité et l'engagement des membres.</li>
+                </ul>
+                
+                <div class="alert alert-warning">
+                    <div class="alert-title"><span class="alert-icon">[ATTENTION]</span> Important</div>
+                    <p>En tant que SL, vous êtes le responsable ultime du développement de vos soldats. Bien que vous déléguerez certains aspects de la formation aux TL, la progression et la montée en grade des membres de votre escouade relèvent de votre responsabilité directe.</p>
+                </div>
+                
+                <h3>Organisation des formations</h3>
+                <ul>
+                    <li>Planifier un calendrier régulier d'entraînements variés.</li>
+                    <li>Coordonner des sessions spécifiques selon les besoins identifiés.</li>
+                    <li>Superviser les formations dispensées par les TL.</li>
+                    <li>Organiser des exercices d'escouade complets.</li>
+                    <li>Solliciter l'expertise externe quand nécessaire.</li>
+                    <li>Assurer le suivi et l'évaluation des progrès.</li>
+                </ul>
+                
+                <div class="exercise">
+                    <div class="exercise-title"><span class="alert-icon">[EXERCICE]</span> Administration</div>
+                    <div class="exercise-content">
+                        <p>Élaboration d'un plan de développement d'escouade.</p>
+                        <p>Scénario : Vous venez de prendre le commandement d'une escouade comprenant des membres de niveaux d'expérience variés. Développez un plan complet sur trois mois incluant : structure d'équipes, programme de formation, système de suivi des performances, organisation Discord, et critères d'évaluation pour promotions potentielles. Précisez comment vous impliquerez vos TL dans ce processus.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Évaluation -->
+            <section id="evaluation" class="section">
+                <h2>8. Évaluation et développement des subordonnés</h2>
+                
+                <div class="alert alert-info">
+                    <div class="alert-title"><span class="alert-icon">[PRINCIPE]</span> Fondamental</div>
+                    <p>L'évaluation régulière et équitable des subordonnés est essentielle pour maintenir et améliorer l'efficacité opérationnelle de l'escouade.</p>
+                </div>
+                
+                <h3>Méthodes d'évaluation</h3>
+                <ul>
+                    <li>Observation directe en mission et en entraînement.</li>
+                    <li>Analyse des rapports et feedback des TL.</li>
+                    <li>Évaluation par exercices et mises en situation.</li>
+                    <li>Auto-évaluation guidée du soldat.</li>
+                    <li>Retours des pairs et évaluation à 360°.</li>
+                </ul>
+                
+                <div class="card-container">
+                    <div class="card">
+                        <div class="card-header">Critères d'évaluation des soldats</div>
+                        <div class="card-body">
+                            <ul>
+                                <li><strong>Compétences tactiques</strong> - Maîtrise des techniques et procédures</li>
+                                <li><strong>Discipline</strong> - Respect des ordres et des procédures</li>
+                                <li><strong>Initiative</strong> - Capacité à agir de manière autonome</li>
+                                <li><strong>Communication</strong> - Clarté et pertinence des transmissions</li>
+                                <li><strong>Travail d'équipe</strong> - Intégration et collaboration</li>
+                                <li><strong>Adaptation</strong> - Réaction face aux changements</li>
+                                <li><strong>Engagement</strong> - Présence et participation active</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-header">Critères d'évaluation des TL</div>
+                        <div class="card-body">
+                            <ul>
+                                <li><strong>Leadership</strong> - Capacité à diriger et motiver</li>
+                                <li><strong>Planification</strong> - Élaboration de plans efficaces</li>
+                                <li><strong>Exécution</strong> - Mise en œuvre opérationnelle</li>
+                                <li><strong>Prise de décision</strong> - Justesse et rapidité</li>
+                                <li><strong>Gestion d'équipe</strong> - Organisation et coordination</li>
+                                <li><strong>Communication</strong> - Briefing et rapports</li>
+                                <li><strong>Développement</strong> - Formation des subordonnés</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <h3>Retour d'information constructif</h3>
+                <ul>
+                    <li>Fournir un feedback régulier, pas uniquement lors des évaluations formelles.</li>
+                    <li>Équilibrer remarques positives et points d'amélioration.</li>
+                    <li>Être spécifique et factuel dans les observations.</li>
+                    <li>Proposer des actions concrètes pour progresser.</li>
+                    <li>Adapter l'approche à la personnalité du subordonné.</li>
+                </ul>
+                
+                <h3>Préparation aux promotions</h3>
+                <ul>
+                    <li>Identifier tôt les candidats à potentiel.</li>
+                    <li>Créer des opportunités de développement ciblées.</li>
+                    <li>Déléguer progressivement des responsabilités supplémentaires.</li>
+                    <li>Fournir mentorat et coaching personnalisé.</li>
+                    <li>Documenter les progrès et réalisations pour appuyer les recommandations.</li>
+                </ul>
+                
+                <div class="exercise">
+                    <div class="exercise-title"><span class="alert-icon">[EXERCICE]</span> Évaluation</div>
+                    <div class="exercise-content">
+                        <p>Élaboration et conduite d'une évaluation complète.</p>
+                        <p>Scénario : Vous devez évaluer un TL en vue d'une potentielle promotion. Développez un plan d'évaluation comprenant : critères spécifiques, méthodes d'observation, exercices pratiques, entretien individuel, et format de rapport final. Puis, simulez la conduite de cette évaluation et la session de feedback qui suit.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Conclusion -->
+            <section id="conclusion" class="section">
+                <h2>Conclusion et validation du SL</h2>
+                
+                <div class="exercise">
+                    <div class="exercise-title"><span class="alert-icon">[VALIDATION]</span> Un SL doit prouver sa capacité à :</div>
+                    <div class="exercise-content">
+                        <div class="checklist">
+                            <div class="checklist-item">
+                                <span class="checklist-icon">✓</span>
+                                <p>Commander efficacement une escouade complète.</p>
+                            </div>
+                            
+                            <div class="checklist-item">
+                                <span class="checklist-icon">✓</span>
+                                <p>Élaborer et communiquer des plans tactiques cohérents.</p>
+                            </div>
+                            
+                            <div class="checklist-item">
+                                <span class="checklist-icon">✓</span>
+                                <p>Coordonner les actions de plusieurs équipes simultanément.</p>
+                            </div>
+                            
+                            <div class="checklist-item">
+                                <span class="checklist-icon">✓</span>
+                                <p>Gérer les communications à tous les niveaux hiérarchiques.</p>
+                            </div>
+                            
+                            <div class="checklist-item">
+                                <span class="checklist-icon">✓</span>
+                                <p>Adapter les tactiques face à l'évolution de la situation.</p>
+                            </div>
+                            
+                            <div class="checklist-item">
+                                <span class="checklist-icon">✓</span>
+                                <p>Administrer et développer les membres de son escouade.</p>
+                            </div>
+                            
+                            <div class="checklist-item">
+                                <span class="checklist-icon">✓</span>
+                                <p>Réussir une épreuve finale combinant test théorique et exercice de commandement.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <p>Cette formation constitue une base solide pour former des Squad Leaders compétents et efficaces au sein de l'AFR. Chaque candidat devra démontrer sa maîtrise de ces principes tant en théorie qu'en pratique pour accéder à ce rôle crucial.</p>
+                
+                <div class="alert alert-success">
+                    <div class="alert-title"><span class="alert-icon">[OBJECTIF]</span> Mission</div>
+                    <p>Le SL est la pierre angulaire de l'efficacité opérationnelle de l'AFR. Formez-vous, pratiquez, et devenez le leader que votre escouade mérite.</p>
+                </div>
+                
+                <h3>Résumé des compétences clés</h3>
+                <ul>
+                    <li><strong>Commandement</strong> - Direction d'escouade et leadership</li>
+                    <li><strong>Planification</strong> - Analyse METTT étendue et élaboration tactique</li>
+                    <li><strong>Communication</strong> - Gestion des flux d'information multiples</li>
+                    <li><strong>Coordination</strong> - Synchronisation des équipes et optimisation</li>
+                    <li><strong>Adaptabilité</strong> - Gestion des crises et situations imprévues</li>
+                    <li><strong>Administration</strong> - Gestion des effectifs et développement</li>
+                    <li><strong>Évaluation</strong> - Appréciation et promotion des talents</li>
+                </ul>
+                
+                <div class="card-container">
+                    <div class="card">
+                        <div class="card-header">Progression continue</div>
+                        <div class="card-body">
+                            <p>En tant que SL confirmé, vous devez :</p>
+                            <ul>
+                                <li>Rester informé des évolutions tactiques</li>
+                                <li>Perfectionner continuellement vos compétences</li>
+                                <li>Participer aux formations avancées</li>
+                                <li>Partager votre expérience avec les candidats SL</li>
+                                <li>Contribuer à l'amélioration des doctrines de l'unité</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <div class="card-header">Ressources supplémentaires</div>
+                        <div class="card-body">
+                            <p>Pour approfondir vos connaissances :</p>
+                            <ul>
+                                <li>Manuel de tactiques avancées d'escouade</li>
+                                <li>Guide de coordination inter-unités</li>
+                                <li>Procédures opérationnelles standard de l'AFR</li>
+                                <li>Bibliothèque de plans tactiques annotés</li>
+                                <li>Simulations de commandement avancées</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        
+        <!-- Pied de page -->
+        <footer>
+            <p>© École des Sous-Officiers - Alliance Francophone Reforger (AFR) - 2025</p>
+            <p>Guide de formation officiel pour les Squad Leaders</p>
+            <button class="btn print-btn" onclick="window.print()">Imprimer le guide</button>
+        </footer>
+    </div>
+    
+    <script>
+        // Navigation entre les sections
+        document.querySelectorAll('.nav-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                // Désactiver tous les boutons et sections
+                document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+                document.querySelectorAll('.section').forEach(section => section.classList.remove('active'));
+                
+                // Activer le bouton cliqué
+                button.classList.add('active');
+                
+                // Activer la section correspondante
+                const sectionId = button.dataset.section;
+                document.getElementById(sectionId).classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
